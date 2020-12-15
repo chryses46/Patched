@@ -102,9 +102,6 @@ public class InputController : MonoBehaviour
                 GameController.instance.Play();
             }
         }
-
-        
-
     }
 
     private IEnumerator PausePress()
@@ -113,6 +110,4 @@ public class InputController : MonoBehaviour
         UIController.instance.PlayUI(false);
         GameController.instance.Pause();
     }
-
-    
 }

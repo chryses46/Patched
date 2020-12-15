@@ -21,7 +21,9 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
+#if UNITY_STANDALONE
         CheckForControllers();
+#endif
     }
 
     private void CheckForControllers()
@@ -37,6 +39,7 @@ public class GameController : MonoBehaviour
                 if (testState.IsConnected)
                 {
                     Debug.Log(string.Format("GamePad found {0}", testPlayerIndex));
+                    ControllerVibration(0,0);
                     playerIndex = testPlayerIndex;
                     playerIndexSet = true;
                 }
@@ -55,7 +58,6 @@ public class GameController : MonoBehaviour
     public void Play()
     {
         StateController.instance.gameState = StateController.State.Play;
-        ControllerVibration(0,0);
         UIController.instance.PlayUI(true);
         AudioController.instance.StartMusic();
         SetTimeScale(1);
